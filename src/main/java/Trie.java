@@ -20,10 +20,6 @@ public class Trie {
         }
     }
 
-    public Trie() {
-        root = new TrieNode();
-    }
-
     private static void insert(String s) {
         TrieNode node = root;
 
@@ -31,13 +27,9 @@ public class Trie {
             char c = s.charAt(i);
             int index = c - 'a';
             if(node.children[index] == null) {
-                TrieNode temp = new TrieNode();
-                node.children[index] = temp;
-                node = temp;
+                node.children[index] = new TrieNode();
             }
-            else {
-                node = node.children[index];
-            }
+            node = node.children[index];
         }
         node.isLeaf = true;
     }
@@ -68,7 +60,7 @@ public class Trie {
     }
 
     public static void main(String[] args) {
-        new Trie();
+        root = new TrieNode();
         String s1 = "care";
         String s2 = "cart";
         String s3 = "cape";
